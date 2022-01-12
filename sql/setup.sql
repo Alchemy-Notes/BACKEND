@@ -5,3 +5,4 @@ CREATE TABLE users (
     username TEXT NOT NULL UNIQUE,
     password_hash TEXT 
 )
+
