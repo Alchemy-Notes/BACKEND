@@ -126,7 +126,7 @@ describe('Notes Routes', () => {
       });
 
     const response = await fakeRequest(app).delete(
-      `/api/notes/delete/${res.id}`
+      `/api/notes/delete/${res.body.id}`
     );
 
     expect(response.body).toEqual(
