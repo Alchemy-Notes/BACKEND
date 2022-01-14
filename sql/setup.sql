@@ -11,7 +11,7 @@ CREATE TABLE users (
 
 CREATE TABLE notes (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id BIGINT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id),
     title TEXT NOT NULL,
     body TEXT NOT NULL,
@@ -26,6 +26,6 @@ CREATE TABLE tags (
 );
 
 CREATE TABLE users_tags (
-    tag_id INTEGER,
-    notetaker_id INTEGER
+    tag_id BIGINT,
+    notetaker_id BIGINT
 );
