@@ -108,6 +108,40 @@ describe('Notes Routes', () => {
     );
   });
 
+  test('/notes/delete/:id will delete a note', async () => {
+    const user = await UserService.create({
+      username: 'notAFakeUser',
+      password: 'notAFakePassword',
+    });
+    const res = await fakeRequest(app)
+      .post('/api/notes/new')
+      .expect('Content-Type', /json/)
+      .send({
+        body: 'Look at my super duper cool JavaScript note. For loops are the best!',
+        title: 'My first note',
+        tags: ['JavaScript'],
+        favorite: false,
+        dateModified: new Date(Date.now()),
+        userId: user.id,
+      });
+
+    const response = await fakeRequest(app).delete(
+      `/api/notes/delete/${res.id}`
+    );
+
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        id: expect.any(String),
+        body: 'Look at my super duper cool JavaScript note. For loops are the best!',
+        title: 'My first note',
+        tags: expect.arrayContaining(['JavaScript']),
+        userId: expect.any(String),
+        favorite: false,
+        dateModified: expect.any(String),
+      })
+    );
+  });
+
   afterAll(() => {
     pool.end();
   });
