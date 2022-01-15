@@ -1,12 +1,11 @@
-const pool = require('../lib/utils/pool');
-const setup = require('../data/setup.js');
+const { execSync } = require('child_process');
 const fakeRequest = require('supertest');
 const app = require('../lib/app');
 const UserService = require('../lib/services/UserService');
 
 describe('Notes Routes', () => {
-  beforeEach(() => {
-    return setup(pool);
+  beforeAll(() => {
+    execSync('npm run setup-db');
   });
 
   test('notes/new route should create a new note', async () => {
@@ -40,10 +39,6 @@ describe('Notes Routes', () => {
   });
 
   test('notes/edit/:id should update a note', async () => {
-    const user = await UserService.create({
-      username: 'notAFakeUser',
-      password: 'notAFakePassword',
-    });
     const res = await fakeRequest(app)
       .post('/api/notes/new')
       .expect('Content-Type', /json/)
@@ -53,7 +48,7 @@ describe('Notes Routes', () => {
         tags: ['JavaScript'],
         favorite: false,
         dateModified: new Date(Date.now()),
-        userId: user.id,
+        userId: 1,
       });
     const response = await fakeRequest(app)
       .put('/api/notes/edit/1')
@@ -64,7 +59,8 @@ describe('Notes Routes', () => {
         tags: ['JavaScript', 'First', 'For Loops'],
         favorite: false,
         dateModified: new Date(Date.now()),
-        userId: res.body.id,
+        userId: res.body.userId,
+        id: 1,
       });
 
     expect(response.body).toEqual(
@@ -81,10 +77,6 @@ describe('Notes Routes', () => {
   });
 
   test('/notes/delete/:id will delete a note', async () => {
-    const user = await UserService.create({
-      username: 'notAFakeUser',
-      password: 'notAFakePassword',
-    });
     const res = await fakeRequest(app)
       .post('/api/notes/new')
       .expect('Content-Type', /json/)
@@ -94,7 +86,7 @@ describe('Notes Routes', () => {
         tags: ['JavaScript'],
         favorite: false,
         dateModified: new Date(Date.now()),
-        userId: user.id,
+        userId: 1,
       });
 
     const response = await fakeRequest(app).delete(
@@ -112,9 +104,5 @@ describe('Notes Routes', () => {
         dateModified: expect.any(String),
       })
     );
-  });
-
-  afterAll(() => {
-    pool.end();
   });
 });
