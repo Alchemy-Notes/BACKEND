@@ -20,4 +20,16 @@ describe('Tags Routes', () => {
       tags: expect.arrayContaining([expect.any(String)]),
     });
   });
+
+  test('posts a single tag', async () => {
+    const response = await fakeRequest(app)
+      .post('/api/tags')
+      .send({ notetakerId: 11, tagText: 'this is a test tag' })
+      .expect('Content-Type', /json/);
+
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      tagText: 'this is a test tag',
+    });
+  });
 });
