@@ -105,4 +105,36 @@ describe('Notes Routes', () => {
       })
     );
   });
+
+  test('should return notes that meet search criteria', async () => {
+    const res = await fakeRequest(app)
+      .post('/api/notes')
+      .expect('Content-Type', /json/)
+      .send({
+        userId: 1,
+        query: { type: 'tag', tags: ['JavaScript'] },
+      });
+
+    expect(res.body).toEqual(
+      expect.arrayContaining([
+        {
+          fakeUserId: '1',
+          fakeTitle: 'JavaScript',
+          fakeBody: 'JavaScript is a programming language',
+          fakeTags: ['JavaScript', 'programming'],
+          fakeFavorite: true,
+          fakeDateModified: expect.any(String),
+        },
+        {
+          fakeUserId: '1',
+          fakeTitle: 'React',
+          fakeBody:
+            'React is a JavaScript framework (or library) no one really seems to know.',
+          fakeTags: ['JavaScript', 'React'],
+          fakeFavorite: false,
+          fakeDateModified: expect.any(String),
+        },
+      ])
+    );
+  });
 });
