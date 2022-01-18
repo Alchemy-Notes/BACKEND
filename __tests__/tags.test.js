@@ -29,7 +29,7 @@ describe('Tags Routes', () => {
 
     expect(response.body).toEqual({
       id: expect.any(String),
-      tagText: 'this is a test tag',
+      text: 'this is a test tag',
     });
   });
 });

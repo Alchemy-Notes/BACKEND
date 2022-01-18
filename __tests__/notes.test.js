@@ -105,4 +105,28 @@ describe('Notes Routes', () => {
       })
     );
   });
+
+  test('should return notes that meet search criteria', async () => {
+    const res = await fakeRequest(app)
+      .post('/api/notes')
+      .expect('Content-Type', /json/)
+      .send({
+        userId: 1,
+        query: { type: 'tag', tags: ['JavaScript', 'React'] },
+      });
+
+    expect(res.body).toEqual(
+      expect.arrayContaining([
+        {
+          userId: '1',
+          id: expect.any(String),
+          title: 'React',
+          body: 'React is a JavaScript framework (or library) no one really seems to know.',
+          tags: ['JavaScript', 'React'],
+          favorite: false,
+          dateModified: expect.any(String),
+        },
+      ])
+    );
+  });
 });
