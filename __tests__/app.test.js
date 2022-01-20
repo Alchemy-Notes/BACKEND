@@ -2,8 +2,6 @@ const fakeRequest = require('supertest');
 const app = require('../lib/app');
 const { execSync } = require('child_process');
 
-const UserService = require('../lib/services/UserService');
-
 describe('Auth Routes', () => {
   beforeAll(() => {
     execSync('npm run setup-db');

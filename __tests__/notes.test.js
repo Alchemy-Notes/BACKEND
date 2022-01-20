@@ -1,11 +1,14 @@
 const { execSync } = require('child_process');
 const fakeRequest = require('supertest');
 const app = require('../lib/app');
+const auth = require('../lib/middleware/ensure-auth');
+jest.mock('../lib/middleware/ensure-auth', () => jest.fn());
 const UserService = require('../lib/services/UserService');
 
 describe('Notes Routes', () => {
   beforeAll(() => {
     execSync('npm run setup-db');
+    auth.mockImplementation((req, res, next) => next());
   });
 
   test('notes/new route should create a new note', async () => {
@@ -109,10 +112,10 @@ describe('Notes Routes', () => {
   test('should return notes that meet search criteria', async () => {
     const res = await fakeRequest(app)
       .post('/api/notes')
-      .expect('Content-Type', /json/)
+      .set('Accept', 'application/json')
       .send({
         userId: 1,
-        query: { type: 'tag', tags: ['JavaScript', 'React'] },
+        query: { type: 'tags', tags: ['JavaScript', 'React'] },
       });
 
     expect(res.body).toEqual(
