@@ -10,7 +10,7 @@
 * Paul Brubaker--  [GitHub](https://github.com/p-brubaker) | [LinkedIn](http://www.linkedin.com/in/paul-brubaker-a94597176/)
 
 # Why Note(d)??
-Note(d) was created by developers for developers at any staging in their career. We really want to emphasize that developers spend a lot of time googling things, all the things. We were passionate about reducing the time it took to find the solution or answer to an issue. We designed an app that saves code snippets and keeps them formatted so it's readable. Whether it's how to create a react app or remembering what an error was, note(d) will keep those values stored away for you!
+Note(d) was created by developers for developers at any stage in their career. We really wanted to emphasize that developers spend a lot of time googling things, all the things. We were passionate about reducing the time it took to find the solution or answer to an issue. We designed an app that saves notes, ideads, solutions, or code snippets that keeps them formatted so it's readable. Whether it's how to create a react app or remembering what an error was, note(d) will keep those values stored away for you!
 
 # How
 * Login by creating a username && password || GitHub OAuth.
