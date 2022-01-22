@@ -9,9 +9,18 @@
 * Pete Hamrick--  [GitHub](https://github.com/pete-hamrick) | [LinkedIn](http://www.linkedin.com/in/petehamrick/)
 * Paul Brubaker--  [GitHub](https://github.com/p-brubaker) | [LinkedIn](http://www.linkedin.com/in/paul-brubaker-a94597176/)
 
+# Why Note(d)??
+Note(d) was created by developers for developers at any staging in their career. We really want to emphasize that developers spend a lot of time googling things, all the things. We were passionate about reducing the time it took to find the solution or answer to an issue. We designed an app that saves code snippets and keeps them formatted so it's readable. Whether it's how to create a react app or remembering what an error was, note(d) will keep those values stored away for you!
+
+# How
+* Login by creating a username && password || GitHub OAuth.
+* Once logged in you can immediately access your favorites or search by topic tags. 
+* Create a note by entering the title, what you want the note to say, and tags (There is a markdown cheatsheet available😁).
+* Repeat over and over again!
+
 
 # Description
-Note(d) is fun and creative app to store your most valued notes! It was built with developers in mind, to store all those great ideas and thoughts you may need later. It allows you to add customized tags to your note so when you're needing it a little later in life, you can retrieve them conveniently. You can go to sleep at night knowing that your notes are stored securely with our thoughtful authorization or GitHub OAuth, just waiting for you to log back in. Jump in and write a couple notes [HERE](https://alchemy-noted.netlify.app/)! ! 
+Note(d) is fun and creative app to store your most valued notes! It was built with developers in mind, to store all those great ideas and thoughts you may need later. It allows you to add customized tags to your note so when you're needing it a little later in life, you can retrieve them conveniently. You can go to sleep at night knowing that your notes are stored securely with our thoughtful authorization or GitHub OAuth, just waiting for you to log back in. Jump in and write a couple notes [HERE](https://alchemy-noted.netlify.app/)! 
 
 ![notedMockupHomePageSmall](https://user-images.githubusercontent.com/82128225/150397103-573ffcfa-88fa-496d-ba4a-aef8d765d482.png)
 ![notedMockupEditPageSmall](https://user-images.githubusercontent.com/82128225/150397232-68584881-81a2-4ad4-b854-96a8b49e6dd0.png)
